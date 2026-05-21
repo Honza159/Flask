@@ -1,0 +1,124 @@
+{
+  "lokace": {
+    "cela": {
+      "nazev": "Zadržovací cela",
+      "popis": "",
+      "vychody": {"doprava": "chodba_kam_1"},
+      "predmety_zde": ["zrezivela_trubka"],
+      "nepritel": null
+    },
+    "chodba_kam_1": {
+      "nazev": "Jižní chodba (CAM 1)",
+      "popis": "",
+      "vychody": {"doleva": "cela_start", "dopredu": "nadvori_kam_2", "doprava": "zahrada_kam_3"},
+      "predmety_zde": [],
+      "nepritel": null
+    },
+    "nadvori_kam_2": {
+      "nazev": "Hlavní nádvoří (CAM 2)",
+      "popis": "",
+      "vychody": {"dozadu": "chodba_kam_1", "doleva": "vstupni_hala_kam_4", "dopredu": "fontana_kam_7"},
+      "predmety_zde": ["olej"],
+      "nepritel": null
+    },
+    "zahrada_kam_3": {
+      "nazev": "Východní zahrady (CAM 3)",
+      "popis": "",
+      "vychody": {"doleva": "chodba_kam_1", "doprava": "pristav_kam_6", "dopredu": "garaze_kam_5"},
+      "predmety_zde": ["dolar", "dolar"],
+      "nepritel": null
+    },
+    "vstupni_hala_kam_4": {
+      "nazev": "Vstupní hala vily (CAM 4)",
+      "popis": "",
+      "vychody": {"doprava": "nadvori_kam_2"},
+      "predmety_zde": [],
+      "nepritel": "strazny"
+    },
+    "garaze_kam_5": {
+      "nazev": "Garáže (CAM 5)",
+      "popis": "",
+      "vychody": {"dozadu": "zahrada_kam_3", "dopredu": "kancelar_kam_8"},
+      "predmety_zde": ["vesta_ochranky"],
+      "nepritel": null
+    },
+    "pristav_kam_6": {
+      "nazev": "Přístavní molo (CAM 6)",
+      "popis": "",
+      "vychody": {"doleva": "zahrada_kam_3"},
+      "predmety_zde": [],
+      "nepritel": null
+    },
+    "fontana_kam_7": {
+      "nazev": "Bizarní fontána (CAM 7)",
+      "popis": "",
+      "vychody": {"dozadu": "nadvori_kam_2", "doprava": "kancelar_kam_8", "dopredu": "chodba_kam_9"},
+      "predmety_zde": ["olej"],
+      "nepritel": null
+    },
+    "kancelar_kam_8": {
+      "nazev": "Kancelář ochranky (CAM 8)",
+      "popis": "",
+      "vychody": {"doleva": "fontana_kam_7", "dozadu": "garaze_kam_5", "dopredu": "trezor_kam_11"},
+      "predmety_zde": ["dolar"],
+      "nepritel": null
+    },
+    "chodba_kam_9": {
+      "nazev": "Západní křídlo (CAM 9)",
+      "popis": "",
+      "vychody": {"dozadu": "fontana_kam_7", "doleva": "slepa_ulicka_kam_10"},
+      "predmety_zde": [],
+      "nepritel": null
+    },
+    "slepa_ulicka_kam_10": {
+      "nazev": "Slepá ulička (CAM 10)",
+      "popis": "",
+      "vychody": {"doprava": "chodba_kam_9"},
+      "predmety_zde": ["zasifrovany_disk"],
+      "nepritel": null
+    },
+    "trezor_kam_11": {
+      "nazev": "Pracovna Magnáta (CAM 11)",
+      "popis": "",
+      "vychody": {"dozadu": "kancelar_kam_8"},
+      "predmety_zde": ["klice_od_clunu"],
+      "nepritel": "magnat"
+    }
+  },
+  "predmety": {
+    "dolar": {
+      "nazev": "Dolar",
+      "typ": "ostatni",
+      "popis": "",
+      "hodnota": 1
+    },
+    "zrezivela_trubka": {
+      "nazev": "Zrezivělá trubka",
+      "typ": "zbran",
+      "popis": "",
+      "bonus_utok": 5
+    },
+    "vesta_ochranky": {
+      "nazev": "Taktická vesta",
+      "typ": "brneni",
+      "popis": "",
+      "bonus_obrana": 10
+    },
+    "olej": {
+      "nazev": "Experimentální tatínkúv olej",
+      "typ": "lektvar",
+      "popis": "",
+      "obnova_zivotu": 25
+    },
+    "zasifrovany_disk": {
+      "nazev": "Zašifrovaný flash disk",
+      "typ": "klicovy",
+      "popis": ""
+    },
+    "klice_od_clunu": {
+      "nazev": "Klíčky od člunu",
+      "typ": "klicovy",
+      "popis": ""
+    }
+  }
+}
