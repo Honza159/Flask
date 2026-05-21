@@ -1,0 +1,44 @@
+body { /* Obrázek pozadí */
+    background-image: url('/static/background.png');
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    margin: 20px;
+}
+
+.game-container {
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 2px solid lime;
+    padding: 20px;
+    max-width: 700px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: 1px solid white;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: monospace;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.map-box {
+    color: lime;
+    border: 1px dashed gray;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: square;
+}
+
+hr {
+    border: 1px solid gray;
+}
