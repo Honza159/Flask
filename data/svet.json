@@ -1,6 +1,6 @@
 {
   "lokace": {
-    "cela": {
+    "cela_start": {
       "nazev": "Zadržovací cela",
       "popis": "",
       "vychody": {"doprava": "chodba_kam_1"},

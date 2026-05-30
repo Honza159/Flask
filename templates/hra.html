@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="game-container">
 
+        <h2>Hráč: {{ jmeno }}</h2>
+        <ul>
+            <li>Životy: {{ hp }}</li>
+            <li>Síla: {{ utok }}</li>
+            <li>Krytí: {{ obrana }}</li>
+        </ul>
+
+        <a href="{{ url_for('inventar_stranka') }}">
+            <button>Otevřít batoh</button>
+        </a>
+        <hr>
+
+        {% if zprava %}
+            <p style="color: yellow;">> {{ zprava }}</p>
+        {% endif %}
+
+        <div class="map-box">
+            <pre>{{ mapa }}</pre>
+        </div>
+
+        <h3>Lokace: {{ lokace.nazev }}</h3>
+        <p>{{ lokace.popis }}</p>
+
+        <hr>
+
+        <h4>Na zemi leží:</h4>
+        {% if predmety_zde %}
+            <ul>
+                {% for predmet_id in predmety_zde %}
+                    <li>
+                        {{ definice_predmetu[predmet_id].nazev }} - {{ definice_predmetu[predmet_id].popis }}
+                        <a href="{{ url_for('vezmi', id_predmetu=predmet_id) }}"><button>Vzít</button></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nic tu není.</p>
+        {% endif %}
+
+        <hr>
+
+        <h4>Pohyb:</h4>
+        <div>
+            {% for smer in lokace.vychody %}
+                <a href="{{ url_for('jdi', smer=smer) }}"><button>{{ smer }}</button></a>
+            {% endfor %}
+        </div>
+
+    </div>
 </body>
 </html>

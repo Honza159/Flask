@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Batoh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="game-container">
+        <h2>Tvůj batoh</h2>
+        <p>HP: {{ hp }}/{{ max_hp }} | Útok: {{ utok }} | Obrana: {{ obrana }}</p>
+        <hr>
 
+        {% if zprava %}
+            <p style="color: yellow;">> {{ zprava }}</p>
+        {% endif %}
+
+        <h4>Věci u sebe:</h4>
+        {% if inventar %}
+            <ul>
+                {% for predmet_id in inventar %}
+                    <li>
+                        {{ definice_predmetu[predmet_id].nazev }}
+                        ({{ definice_predmetu[predmet_id].typ }})
+
+                        {% if definice_predmetu[predmet_id].typ == 'lektvar' %}
+                            <a href="{{ url_for('pouzi', id_predmetu=predmet_id) }}"><button>Použít</button></a>
+                        {% endif %}
+
+                        <a href="{{ url_for('vyhod', id_predmetu=predmet_id) }}"><button>Vyhodit</button></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Batoh je prázdný.</p>
+        {% endif %}
+
+        <hr>
+        <a href="{{ url_for('hra') }}"><button>Zpět do hry</button></a>
+    </div>
 </body>
 </html>

@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SOUBOJ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="game-container" style="border-color: red;">
+        <h2 style="color: red;">SOUBOJ!</h2>
 
+        <p style="color: yellow;">> {{ zprava }}</p>
+        <hr>
+
+        <div class="stats-container" style="display: flex; justify-content: space-between;">
+            <div class="player-stats">
+                <h4>Ty:</h4>
+                <ul>
+                    <li>Životy: {{ hp }} / {{ max_hp }}</li>
+                    <li>Síla: {{ utok }}</li>
+                    <li>Krytí: {{ obrana }}</li>
+                </ul>
+            </div>
+
+            <div class="enemy-stats">
+                <h4>Nepřítel: {{ nepritel.nazev }}</h4>
+                <ul>
+                    <li>Životy: {{ nepritel.hp }}</li>
+                    <li>Síla: {{ nepritel.utok }}</li>
+                    <li>Krytí: {{ nepritel.obrana }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+        <h4>Zvol akci:</h4>
+
+        <a href="{{ url_for('akce_souboj', akce='utok') }}" class="action-button">
+            <button>Zaútočit zbraní</button>
+        </a>
+
+        <a href="{{ url_for('inventar_stranka') }}" class="action-button">
+            <button>Otevřít batoh (Léčení)</button>
+        </a>
+
+        <a href="{{ url_for('akce_souboj', akce='utek') }}" class="action-button">
+            <button>Utéct pryč</button>
+        </a>
+
+    </div>
 </body>
 </html>

@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Konec hry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="game-container" style="text-align: center;">
 
+        {% if vysledek == 'vyhra' %}
+            <h1 style="color: lime;">ÚTĚK SE ZDAŘIL!</h1>
+            <p>Porazil jsi Magnáta, sebral mu klíčky a úspěšně jsi odplul na člunu pryč z ostrova.</p>
+            <p>Přežil jsi a splnil cíl hry.</p>
+        {% else %}
+            <h1 style="color: red;">ZEMŘEL JSI</h1>
+            <p>Tvé životy klesly na 0. Ostrov se stal tvým hrobem.</p>
+        {% endif %}
+
+        <hr>
+        <a href="{{ url_for('index') }}">
+            <button>Hrát znovu od začátku</button>
+        </a>
+
+    </div>
 </body>
 </html>
