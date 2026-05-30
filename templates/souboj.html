@@ -2,50 +2,83 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>SOUBOJ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Útěk z ostrova – SOUBOJ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="game-container" style="border-color: red;">
-        <h2 style="color: red;">SOUBOJ!</h2>
+    <div class="game-container combat-container">
+        <h2 class="combat-title">⚔️ SOUBOJ!</h2>
 
-        <p style="color: yellow;">> {{ zprava }}</p>
+        <div class="combat-zprava">{{ zprava }}</div>
+
         <hr>
 
-        <div class="stats-container" style="display: flex; justify-content: space-between;">
-            <div class="player-stats">
-                <h4>Ty:</h4>
-                <ul>
-                    <li>Životy: {{ hp }} / {{ max_hp }}</li>
-                    <li>Síla: {{ utok }}</li>
-                    <li>Krytí: {{ obrana }}</li>
+        <!-- Statistiky v souboji -->
+        <div class="combat-stats">
+            <div class="combat-player">
+                <h4>🧑 Ty</h4>
+                <div class="hp-bar-wrapper">
+                    <span class="hp-label">❤️ {{ hp }} / {{ max_hp }}</span>
+                    <div class="hp-bar-bg">
+                        <div class="hp-bar-fill {% if hp < max_hp * 0.3 %}hp-low{% elif hp < max_hp * 0.6 %}hp-mid{% endif %}"
+                             style="width: {{ ((hp / max_hp) * 100) | int }}%"></div>
+                    </div>
+                </div>
+                <ul class="stat-list">
+                    <li>⚔️ Útok: <strong>{{ utok }}</strong></li>
+                    <li>🛡️ Obrana: <strong>{{ obrana }}</strong></li>
                 </ul>
             </div>
 
-            <div class="enemy-stats">
-                <h4>Nepřítel: {{ nepritel.nazev }}</h4>
-                <ul>
-                    <li>Životy: {{ nepritel.hp }}</li>
-                    <li>Síla: {{ nepritel.utok }}</li>
-                    <li>Krytí: {{ nepritel.obrana }}</li>
+            <div class="combat-vs">VS</div>
+
+            <div class="combat-enemy">
+                <h4>💀 {{ nepritel.nazev }}</h4>
+                <div class="hp-bar-wrapper">
+                    <span class="hp-label">❤️ {{ nepritel.hp }} / {{ nepritel.max_hp }}</span>
+                    <div class="hp-bar-bg">
+                        <div class="hp-bar-fill hp-enemy"
+                             style="width: {{ ((nepritel.hp / nepritel.max_hp) * 100) | int }}%"></div>
+                    </div>
+                </div>
+                <ul class="stat-list">
+                    <li>⚔️ Útok: <strong>{{ nepritel.utok }}</strong></li>
+                    <li>🛡️ Obrana: <strong>{{ nepritel.obrana }}</strong></li>
                 </ul>
             </div>
         </div>
 
         <hr>
+
+        <!-- Akce v souboji -->
         <h4>Zvol akci:</h4>
+        <div class="combat-actions">
+            <a href="{{ url_for('akce_souboj', akce='utok') }}">
+                <button class="btn-attack">⚔️ Zaútočit</button>
+            </a>
 
-        <a href="{{ url_for('akce_souboj', akce='utok') }}" class="action-button">
-            <button>Zaútočit zbraní</button>
-        </a>
+            <a href="{{ url_for('akce_souboj', akce='utek') }}">
+                <button class="btn-flee">🏃 Utéct (zpět do cely)</button>
+            </a>
+        </div>
 
-        <a href="{{ url_for('inventar_stranka') }}" class="action-button">
-            <button>Otevřít batoh (Léčení)</button>
-        </a>
-
-        <a href="{{ url_for('akce_souboj', akce='utek') }}" class="action-button">
-            <button>Utéct pryč</button>
-        </a>
+        <!-- Použití léčiva přímo v souboji -->
+        {% if lektvary %}
+            <div class="combat-heal">
+                <h4>💊 Použít lektvar (nepřítel zaútočí za tvůj tah):</h4>
+                <div class="item-actions">
+                    {% for pid in lektvary %}
+                        <a href="{{ url_for('pouzi_v_souboji', id_predmetu=pid) }}">
+                            <button class="btn-heal">
+                                💊 {{ definice_predmetu[pid].nazev }}
+                                (+{{ definice_predmetu[pid].obnova_zivotu }} HP)
+                            </button>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
 
     </div>
 </body>

@@ -2,25 +2,54 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Konec hry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Útěk z ostrova – Konec</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="game-container" style="text-align: center;">
+    <div class="game-container end-container">
 
         {% if vysledek == 'vyhra' %}
-            <h1 style="color: lime;">ÚTĚK SE ZDAŘIL!</h1>
-            <p>Porazil jsi Magnáta, sebral mu klíčky a úspěšně jsi odplul na člunu pryč z ostrova.</p>
-            <p>Přežil jsi a splnil cíl hry.</p>
+            <div class="end-win">
+                <pre class="end-ascii">
+ __   __  ___   _______  _______  ______    ___  
+|  | |  ||   | |       ||       ||    _ |  |   | 
+|  |_|  ||   | |_     _||    ___||   | ||  |   | 
+|       ||   |   |   |  |   |___ |   |_||_ |   | 
+|       ||   |   |   |  |    ___||    __  ||   | 
+ |     | |   |   |   |  |   |___ |   |  | ||   | 
+  |___|  |___|   |___|  |_______||___|  |_||___| 
+                </pre>
+                <h1 class="win-title">🏆 ÚTĚK SE ZDAŘIL!</h1>
+                <p>Porazil jsi Magnáta, získal jsi klíče od člunu a úspěšně odplul
+                z tajemného ostrova na svobodu.</p>
+                <p>Tvůj příběh přežití bude vyprávěn ještě dlouho.</p>
+                <p class="end-emoji">⛵ 🌊 🏝️ 🎉</p>
+            </div>
         {% else %}
-            <h1 style="color: red;">ZEMŘEL JSI</h1>
-            <p>Tvé životy klesly na 0. Ostrov se stal tvým hrobem.</p>
+            <div class="end-lose">
+                <pre class="end-ascii">
+ _______  _______  ___   ___  ______  ___ 
+|       ||       ||   | |   ||   _  ||   |
+|  _____||_     _||   |_|   ||  |_| ||   |
+| |_____   |   |  |      _  ||   _  ||   |
+|_____  |  |   |  |     |_| ||  | | ||   |___
+ _____| |  |   |  |    _    ||  |_| ||       |
+|_______|  |___|  |___| |___||_______||_______|
+                </pre>
+                <h1 class="lose-title">💀 ZEMŘEL JSI</h1>
+                <p>Tvé životy klesly na 0. Ostrov pohltil dalšího nešťastníka.</p>
+                <p>Možná příště budeš opatrnější...</p>
+                <p class="end-emoji">☠️ 🩸 🏝️</p>
+            </div>
         {% endif %}
 
         <hr>
-        <a href="{{ url_for('index') }}">
-            <button>Hrát znovu od začátku</button>
-        </a>
+        <div style="text-align: center;">
+            <a href="{{ url_for('index') }}">
+                <button class="btn-primary">🔄 Hrát znovu od začátku</button>
+            </a>
+        </div>
 
     </div>
 </body>
