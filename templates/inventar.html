@@ -37,6 +37,7 @@
 
     <!-- seznam predmetu v batohu -->
     <h4>Věci u sebe:</h4>
+    {% set typy = {'zbran':'Zbraň','brneni':'Brnění','lektvar':'Lektvar','klicovy':'Klíčový předmět','ostatni':'Ostatní'} %}
     {% if inventar %}
         <ul class="item-list">
         {% for pid in inventar %}
@@ -44,7 +45,7 @@
             <li class="item-row">
                 <div class="item-info">
                     <span class="item-name">{{ p.nazev }}</span>
-                    <span class="item-type">[{{ p.typ }}]</span>
+                    <span class="item-type">[{{ typy.get(p.typ, p.typ) }}]</span>
                     <span class="item-desc">{{ p.popis }}</span>
                     <!-- bonusy ze zbrani a brneni -->
                     {% if p.bonus_utok   > 0 %}<span class="item-bonus">+{{ p.bonus_utok }} útok</span>{% endif %}

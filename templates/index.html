@@ -54,6 +54,7 @@
 
     <!-- predmety lezici na zemi v teto lokaci -->
     <h4>Na zemi leží:</h4>
+    {% set typy = {'zbran':'Zbraň','brneni':'Brnění','lektvar':'Lektvar','klicovy':'Klíčový předmět','ostatni':'Ostatní'} %}
     {% if predmety_zde %}
         <ul class="item-list">
         {% for pid in predmety_zde %}
@@ -61,7 +62,7 @@
             <li class="item-row">
                 <div class="item-info">
                     <span class="item-name">{{ p.nazev }}</span>
-                    <span class="item-type">[{{ p.typ }}]</span>
+                    <span class="item-type">[{{ typy.get(p.typ, p.typ) }}]</span>
                     <span class="item-desc">{{ p.popis }}</span>
                 </div>
                 <a href="{{ url_for('vezmi', id_predmetu=pid) }}">

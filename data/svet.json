@@ -74,7 +74,7 @@
       "nazev": "Slepá ulička",
       "popis": "Zaprášená místnost plná starých krabic a odloženého nábytku. Na zdi je fixem napsáno: 'Jmenuji se Tomáš Hrubý. Byl jsem tu 43 dní. Klíče a disk jsem schoval sem – doufám, že to najde někdo, kdo to využije lépe než já.' Nedopsal. Na háčku u zdi visí klíče s přívěskem ve tvaru kotvy. Za největší krabicí leží USB flash disk s nálepkou TREZOR. Tohle je tvoje záchrana, Tomáši.",
       "vychody": {"doprava": "chodba_kam_9"},
-      "predmety_zde": ["zasifrovany_disk", "klice_od_clunu"],
+      "predmety_zde": ["zasifrovany_disk"],
       "nepritel": null
     },
     "trezor_kam_11": {
@@ -164,7 +164,7 @@
       "max_hp": 60,
       "utok": 18,
       "obrana": 5,
-      "drop": "lektvar_olej"
+      "drop": "klice_od_clunu"
     }
   }
 }
