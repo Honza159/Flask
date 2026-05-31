@@ -22,7 +22,7 @@ Hra poběží na `http://localhost:5000`.
 
 ## O čem hra je
 
-Hraješ za novináře, který vyšetřoval zločince Viktora Vaška — magnáta provozujícího
+Hraješ za novináře, který vyšetřoval zločince Viktora Vaška. Magnáta provozujícího
 pašování z soukromého ostrova. Přiblížil ses příliš k pravdě a Vašek tě nechal unést.
 
 Probudíš se v zamčené cele. Na zdi je vzkaz od předchozího vězně Tomáše Hrubého,
@@ -31,7 +31,7 @@ v opuštěném křídle vily.
 
 Cíl hry:
 
-1. Najdi přístupový flash disk (slepá ulička v záp. křídle)
+1. Najdi přístupový flash disk
 2. Dostaň se do pracovny Viktora Vaška a poraz ho v souboji
 3. Získej klíče od člunu
 4. Dojdi na přístavní molo a odpluj
@@ -42,15 +42,15 @@ Cíl hry:
 
 Hra se ovládá výhradně klikáním na tlačítka v prohlížeči.
 
-| Akce | Jak |
-|---|---|
+| Akce | Jak                                         |
+|---|---------------------------------------------|
 | Pohyb po mapě | Tlačítka Dopředu / Dozadu / Doleva / Doprava |
-| Sebrat předmět | Tlačítko "Vzít" u předmětu na zemi |
-| Otevřít batoh | Tlačítko "Batoh" v horní části obrazovky |
-| Použít lektvar | V batohu klikni "Použít" u lektvaru |
-| Vyhodit předmět | V batohu klikni "Vyhodit" |
-| Zaútočit v souboji | Tlačítko "Zaútočit" |
-| Utéct ze souboje | Tlačítko "Utéct" — vrátí tě do startovní cely |
+| Sebrat předmět | Tlačítko "Vzít" u předmětu na zemi          |
+| Otevřít batoh | Tlačítko "Batoh" v horní části obrazovky    |
+| Použít lektvar | V batohu klikni "Použít" u lektvaru         |
+| Vyhodit předmět | V batohu klikni "Vyhodit"                   |
+| Zaútočit v souboji | Tlačítko "Zaútočit"                         |
+| Utéct ze souboje | Tlačítko "Utéct" tě vrátí do startovní cely |
 | Odplout (výhra) | Na přístavním mole s klíči od člunu v batohu |
 
 ---
@@ -72,11 +72,11 @@ Limit batohu: 8 slotů.
 
 ## Nepřátelé
 
-| Nepřítel | HP | Útok | Obrana | Drop |
-|---|---|---|---|---|
-| Strážný | 35 | 12 | 2 | nůž |
-| Strážce garáží | 45 | 15 | 4 | elixír |
-| Viktor Vašek | 60 | 18 | 5 | elixír |
+| Nepřítel | HP | Útok | Obrana | Drop           |
+|---|---|---|---|----------------|
+| Strážný | 35 | 12 | 2 | nůž            |
+| Strážce garáží | 45 | 15 | 4 | elixír         |
+| Viktor Vašek | 60 | 18 | 5 | Klíče od člunu |
 
 ---
 
@@ -99,6 +99,7 @@ Standardní knihovny Pythonu: `json`, `os`, `random`.
 app.py              -- hlavní Flask aplikace, všechny routy
 data/
   svet.json         -- data hry: lokace, předměty, nepřátelé
+  img.png           -- vizuální obrázek mapy na papíře
 game/
   hrdina.py         -- třída Hrdina (HP, statistiky)
   inventar.py       -- třída Inventar, MAX_SLOTS
