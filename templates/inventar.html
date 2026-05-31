@@ -8,12 +8,12 @@
 </head>
 <body>
     <div class="game-container">
-        <h2>🎒 Tvůj batoh</h2>
+        <h2>Tvuj batoh</h2>
 
         <!-- Statistiky hrdiny -->
         <div class="inv-stats">
             <div class="inv-stat">
-                <span class="inv-stat-label">❤️ Životy</span>
+                <span class="inv-stat-label">Zivoty</span>
                 <div class="hp-bar-wrapper">
                     <span class="hp-label">{{ hp }} / {{ max_hp }}</span>
                     <div class="hp-bar-bg">
@@ -23,11 +23,11 @@
                 </div>
             </div>
             <div class="inv-stat-row">
-                <span>⚔️ Útok: <strong>{{ utok }}</strong></span>
-                <span>🛡️ Obrana: <strong>{{ obrana }}</strong></span>
+                <span>Utok: <strong>{{ utok }}</strong></span>
+                <span>Obrana: <strong>{{ obrana }}</strong></span>
                 <span class="slot-info {% if pocet_slotu >= max_slotu %}slot-full{% endif %}">
-                    🎒 Sloty: <strong>{{ pocet_slotu }} / {{ max_slotu }}</strong>
-                    {% if pocet_slotu >= max_slotu %} – PLNÝ!{% endif %}
+                    Sloty: <strong>{{ pocet_slotu }} / {{ max_slotu }}</strong>
+                    {% if pocet_slotu >= max_slotu %} - PLNY!{% endif %}
                 </span>
             </div>
         </div>
@@ -39,25 +39,18 @@
         {% endif %}
 
         <!-- Seznam předmětů -->
-        <h4>Věci u sebe:</h4>
+        <h4>Veci u sebe:</h4>
         {% if inventar %}
             <ul class="item-list">
                 {% for predmet_id in inventar %}
                     {% set p = definice_predmetu[predmet_id] %}
                     <li class="item-row">
-                        <span class="item-icon">
-                            {% if p.typ == 'zbran' %}⚔️
-                            {% elif p.typ == 'brneni' %}🛡️
-                            {% elif p.typ == 'lektvar' %}💊
-                            {% elif p.typ == 'klicovy' %}🔑
-                            {% else %}💰{% endif %}
-                        </span>
                         <div class="item-info">
                             <span class="item-name">{{ p.nazev }}</span>
-                            <span class="item-type">({{ p.typ }})</span>
+                            <span class="item-type">[{{ p.typ }}]</span>
                             <span class="item-desc">{{ p.popis }}</span>
                             {% if p.bonus_utok and p.bonus_utok > 0 %}
-                                <span class="item-bonus">+{{ p.bonus_utok }} útok</span>
+                                <span class="item-bonus">+{{ p.bonus_utok }} utok</span>
                             {% endif %}
                             {% if p.bonus_obrana and p.bonus_obrana > 0 %}
                                 <span class="item-bonus">+{{ p.bonus_obrana }} obrana</span>
@@ -69,7 +62,7 @@
                         <div class="item-btns">
                             {% if p.typ == 'lektvar' %}
                                 <a href="{{ url_for('pouzi', id_predmetu=predmet_id) }}">
-                                    <button class="btn-heal">Použít</button>
+                                    <button class="btn-heal">Pouzit</button>
                                 </a>
                             {% endif %}
                             <a href="{{ url_for('vyhod', id_predmetu=predmet_id) }}">
@@ -80,12 +73,12 @@
                 {% endfor %}
             </ul>
         {% else %}
-            <p class="muted">Batoh je prázdný.</p>
+            <p class="muted">Batoh je prazdny.</p>
         {% endif %}
 
         <hr>
         <a href="{{ url_for('hra') }}">
-            <button class="btn-secondary">← Zpět do hry</button>
+            <button class="btn-secondary">Zpet do hry</button>
         </a>
     </div>
 </body>

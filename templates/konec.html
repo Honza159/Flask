@@ -11,43 +11,23 @@
 
         {% if vysledek == 'vyhra' %}
             <div class="end-win">
-                <pre class="end-ascii">
- __   __  ___   _______  _______  ______    ___  
-|  | |  ||   | |       ||       ||    _ |  |   | 
-|  |_|  ||   | |_     _||    ___||   | ||  |   | 
-|       ||   |   |   |  |   |___ |   |_||_ |   | 
-|       ||   |   |   |  |    ___||    __  ||   | 
- |     | |   |   |   |  |   |___ |   |  | ||   | 
-  |___|  |___|   |___|  |_______||___|  |_||___| 
-                </pre>
-                <h1 class="win-title">🏆 ÚTĚK SE ZDAŘIL!</h1>
-                <p>Porazil jsi Magnáta, získal jsi klíče od člunu a úspěšně odplul
-                z tajemného ostrova na svobodu.</p>
-                <p>Tvůj příběh přežití bude vyprávěn ještě dlouho.</p>
-                <p class="end-emoji">⛵ 🌊 🏝️ 🎉</p>
+                <h1 class="win-title">UTEK SE ZDARIL!</h1>
+                <p>Porazil jsi Magnata, ziskal jsi klice od clunu a uspesne odplul
+                z tajemneho ostrova na svobodu.</p>
+                <p>Tvuj pribeh preziti bude vypravovani jeste dlouho.</p>
             </div>
         {% else %}
             <div class="end-lose">
-                <pre class="end-ascii">
- _______  _______  ___   ___  ______  ___ 
-|       ||       ||   | |   ||   _  ||   |
-|  _____||_     _||   |_|   ||  |_| ||   |
-| |_____   |   |  |      _  ||   _  ||   |
-|_____  |  |   |  |     |_| ||  | | ||   |___
- _____| |  |   |  |    _    ||  |_| ||       |
-|_______|  |___|  |___| |___||_______||_______|
-                </pre>
-                <h1 class="lose-title">💀 ZEMŘEL JSI</h1>
-                <p>Tvé životy klesly na 0. Ostrov pohltil dalšího nešťastníka.</p>
-                <p>Možná příště budeš opatrnější...</p>
-                <p class="end-emoji">☠️ 🩸 🏝️</p>
+                <h1 class="lose-title">ZEMREL JSI</h1>
+                <p>Tvoje zivoty klesly na 0. Ostrov pohltil dalsiho nestastnika.</p>
+                <p>Mozna priste budes opatrnijsi...</p>
             </div>
         {% endif %}
 
         <hr>
         <div style="text-align: center;">
             <a href="{{ url_for('index') }}">
-                <button class="btn-primary">🔄 Hrát znovu od začátku</button>
+                <button class="btn-primary">Hrat znovu od zacatku</button>
             </a>
         </div>
 

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Útěk z ostrova – SOUBOJ</title>
+    <title>Útěk z ostrova – Souboj</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="game-container combat-container">
-        <h2 class="combat-title">⚔️ SOUBOJ!</h2>
+        <h2 class="combat-title">SOUBOJ!</h2>
 
         <div class="combat-zprava">{{ zprava }}</div>
 
@@ -17,34 +17,34 @@
         <!-- Statistiky v souboji -->
         <div class="combat-stats">
             <div class="combat-player">
-                <h4>🧑 Ty</h4>
+                <h4>Ty</h4>
                 <div class="hp-bar-wrapper">
-                    <span class="hp-label">❤️ {{ hp }} / {{ max_hp }}</span>
+                    <span class="hp-label">Zivoty: {{ hp }} / {{ max_hp }}</span>
                     <div class="hp-bar-bg">
                         <div class="hp-bar-fill {% if hp < max_hp * 0.3 %}hp-low{% elif hp < max_hp * 0.6 %}hp-mid{% endif %}"
                              style="width: {{ ((hp / max_hp) * 100) | int }}%"></div>
                     </div>
                 </div>
                 <ul class="stat-list">
-                    <li>⚔️ Útok: <strong>{{ utok }}</strong></li>
-                    <li>🛡️ Obrana: <strong>{{ obrana }}</strong></li>
+                    <li>Utok: <strong>{{ utok }}</strong></li>
+                    <li>Obrana: <strong>{{ obrana }}</strong></li>
                 </ul>
             </div>
 
             <div class="combat-vs">VS</div>
 
             <div class="combat-enemy">
-                <h4>💀 {{ nepritel.nazev }}</h4>
+                <h4>{{ nepritel.nazev }}</h4>
                 <div class="hp-bar-wrapper">
-                    <span class="hp-label">❤️ {{ nepritel.hp }} / {{ nepritel.max_hp }}</span>
+                    <span class="hp-label">Zivoty: {{ nepritel.hp }} / {{ nepritel.max_hp }}</span>
                     <div class="hp-bar-bg">
                         <div class="hp-bar-fill hp-enemy"
                              style="width: {{ ((nepritel.hp / nepritel.max_hp) * 100) | int }}%"></div>
                     </div>
                 </div>
                 <ul class="stat-list">
-                    <li>⚔️ Útok: <strong>{{ nepritel.utok }}</strong></li>
-                    <li>🛡️ Obrana: <strong>{{ nepritel.obrana }}</strong></li>
+                    <li>Utok: <strong>{{ nepritel.utok }}</strong></li>
+                    <li>Obrana: <strong>{{ nepritel.obrana }}</strong></li>
                 </ul>
             </div>
         </div>
@@ -55,23 +55,23 @@
         <h4>Zvol akci:</h4>
         <div class="combat-actions">
             <a href="{{ url_for('akce_souboj', akce='utok') }}">
-                <button class="btn-attack">⚔️ Zaútočit</button>
+                <button class="btn-attack">Zautoct</button>
             </a>
 
             <a href="{{ url_for('akce_souboj', akce='utek') }}">
-                <button class="btn-flee">🏃 Utéct (zpět do cely)</button>
+                <button class="btn-flee">Utect (zpet do cely)</button>
             </a>
         </div>
 
         <!-- Použití léčiva přímo v souboji -->
         {% if lektvary %}
             <div class="combat-heal">
-                <h4>💊 Použít lektvar (nepřítel zaútočí za tvůj tah):</h4>
+                <h4>Pouzit lektvar (nepritel zautoct za tvuj tah):</h4>
                 <div class="item-actions">
                     {% for pid in lektvary %}
                         <a href="{{ url_for('pouzi_v_souboji', id_predmetu=pid) }}">
                             <button class="btn-heal">
-                                💊 {{ definice_predmetu[pid].nazev }}
+                                {{ definice_predmetu[pid].nazev }}
                                 (+{{ definice_predmetu[pid].obnova_zivotu }} HP)
                             </button>
                         </a>

@@ -45,7 +45,7 @@
     "pristav_kam_6": {
       "nazev": "Přístavní molo",
       "popis": "Dřevěné molo s houpajícím se motorovým člunem. Toto je tvoje cesta ven! Moře se třpytí na slunci a svoboda je na dosah. Potřebuješ ale klíče od člunu – bez nich motor nespustíš.",
-      "vychody": {"dozadu": "zahrada_kam_3"},
+      "vychody": {"doleva": "zahrada_kam_3"},
       "predmety_zde": [],
       "nepritel": null
     },

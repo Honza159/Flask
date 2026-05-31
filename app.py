@@ -92,8 +92,8 @@ def jdi(smer):
         # Klíčový předmět – brána do trezoru
         if nova_lokace_id == 'trezor_kam_11' and 'zasifrovany_disk' not in session['inventar']:
             session['herni_zprava'] = (
-                "🔒 Dveře jsou elektronicky zamčené. Potřebuješ přístupový kód "
-                "(flash disk z místnosti v západním křídle)."
+                "Dvere jsou elektronicky zamcene. Potrebujes pristupovy kod "
+                "(flash disk z mistnosti v zapadnim kridle)."
             )
             return redirect(url_for('hra'))
 
@@ -104,7 +104,7 @@ def jdi(smer):
         id_nepritele = nova_lokace_data.get('nepritel')
         if id_nepritele and session['nepratele'][id_nepritele]['hp'] > 0:
             session['zprava_souboj'] = (
-                f"⚔️ Cestu ti zablokoval {session['nepratele'][id_nepritele]['nazev']}!"
+                f"Cestu ti zablokoval {session['nepratele'][id_nepritele]['nazev']}!"
             )
             return redirect(url_for('souboj'))
 
@@ -115,7 +115,7 @@ def jdi(smer):
 def odplout():
     """Win condition – odplutí na člunu s klíči."""
     if 'klice_od_clunu' not in session.get('inventar', []):
-        session['herni_zprava'] = "⛵ Člun tu je, ale chybí ti klíče. Najdi je nejdřív!"
+        session['herni_zprava'] = "Clun tu je, ale chybi ti klice. Najdi je nejdriv!"
         return redirect(url_for('hra'))
     return redirect(url_for('konec', vysledek='vyhra'))
 
@@ -130,13 +130,13 @@ def vezmi(id_predmetu):
     aktualni_id = session['aktualni_lokace']
 
     if len(session['inventar']) >= MAX_SLOTS:
-        session['herni_zprava'] = f"🎒 Batoh je plný! (max {MAX_SLOTS} předmětů) Nejdřív něco vyhoď."
+        session['herni_zprava'] = f"Batoh je plny! (max {MAX_SLOTS} predmetu) Nejdriv neco vyhod."
         return redirect(url_for('hra'))
 
     if id_predmetu in session['mapa_predmetu'][aktualni_id]:
         session['mapa_predmetu'][aktualni_id].remove(id_predmetu)
         session['inventar'].append(id_predmetu)
-        session['herni_zprava'] = "✅ Sebral jsi předmět."
+        session['herni_zprava'] = "Sebral jsi predmet."
         session.modified = True
 
     return redirect(url_for('hra'))
@@ -178,7 +178,7 @@ def pouzi(id_predmetu):
         )
         session['hrdina_hp'] = nove_hp
         session['inventar'].remove(id_predmetu)
-        session['inventar_zprava'] = "💊 " + zprava
+        session['inventar_zprava'] = zprava
         session.modified = True
 
     return redirect(url_for('inventar_stranka'))
@@ -189,7 +189,7 @@ def vyhod(id_predmetu):
     if id_predmetu in session['inventar']:
         session['inventar'].remove(id_predmetu)
         session['mapa_predmetu'][session['aktualni_lokace']].append(id_predmetu)
-        session['inventar_zprava'] = "🗑️ Předmět jsi vyhodil na zem."
+        session['inventar_zprava'] = "Predmet jsi vyhodil na zem."
         session.modified = True
     return redirect(url_for('inventar_stranka'))
 
@@ -281,7 +281,7 @@ def akce_souboj(akce):
 
     if akce == 'utek':
         session['aktualni_lokace'] = 'cela_start'
-        session['herni_zprava'] = "🏃 Utekl jsi v panice zpět do cely."
+        session['herni_zprava'] = "Utekl jsi v panice zpet do cely."
         return redirect(url_for('hra'))
 
     if akce == 'utok':
@@ -304,11 +304,11 @@ def akce_souboj(akce):
 
             if id_nepritele == 'magnat':
                 # Vítězství zajišťuje jen odplutí, klíče spadnou
-                session['herni_zprava'] = f"🏆 Porazil jsi Magnáta!{zprava_lootu} Nyní jdi na přístav a odpluj!"
+                session['herni_zprava'] = f"Porazil jsi Magnata!{zprava_lootu} Nyni jdi na pristav a odpluj!"
                 session.modified = True
                 return redirect(url_for('hra'))
 
-            session['herni_zprava'] = f"✅ Nepřítel poražen!{zprava_lootu} Můžeš pokračovat."
+            session['herni_zprava'] = f"Nepritel porazen!{zprava_lootu} Muzes pokracovat."
             session.modified = True
             return redirect(url_for('hra'))
 
@@ -320,8 +320,8 @@ def akce_souboj(akce):
             return redirect(url_for('konec', vysledek='prohra'))
 
         session['zprava_souboj'] = (
-            f"⚔️ Udělil jsi {dmg_do_nepritele} DMG. "
-            f"Nepřítel ti vrátil úder za {dmg_do_hrdiny} DMG."
+            f"Udelil jsi {dmg_do_nepritele} DMG. "
+            f"Nepritel ti vratil uder za {dmg_do_hrdiny} DMG."
         )
         session.modified = True
         return redirect(url_for('souboj'))

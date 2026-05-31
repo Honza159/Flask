@@ -12,18 +12,18 @@
         <!-- Hlavička: statistiky hrdiny -->
         <div class="hud">
             <div class="hud-left">
-                <span class="hud-name">🧑 {{ jmeno }}</span>
+                <span class="hud-name">{{ jmeno }}</span>
             </div>
             <div class="hud-right">
-                <span>⚔️ {{ utok }}</span>
-                <span>🛡️ {{ obrana }}</span>
-                <span>🎒 {{ pocet_slotu }}/{{ max_slotu }}</span>
+                <span>Utok: {{ utok }}</span>
+                <span>Obrana: {{ obrana }}</span>
+                <span>Batoh: {{ pocet_slotu }}/{{ max_slotu }}</span>
             </div>
         </div>
 
         <!-- HP bar -->
         <div class="hp-bar-wrapper">
-            <span class="hp-label">❤️ {{ hp }} / {{ max_hp }}</span>
+            <span class="hp-label">Zivoty: {{ hp }} / {{ max_hp }}</span>
             <div class="hp-bar-bg">
                 <div class="hp-bar-fill {% if hp < max_hp * 0.3 %}hp-low{% elif hp < max_hp * 0.6 %}hp-mid{% endif %}"
                      style="width: {{ ((hp / max_hp) * 100) | int }}%"></div>
@@ -32,7 +32,7 @@
 
         <div class="top-buttons">
             <a href="{{ url_for('inventar_stranka') }}">
-                <button class="btn-secondary">🎒 Batoh ({{ pocet_slotu }}/{{ max_slotu }})</button>
+                <button class="btn-secondary">Batoh ({{ pocet_slotu }}/{{ max_slotu }})</button>
             </a>
         </div>
 
@@ -49,35 +49,31 @@
         </div>
 
         <!-- Popis lokace -->
-        <h3 class="lokace-nazev">📍 {{ lokace.nazev }}</h3>
+        <h3 class="lokace-nazev">{{ lokace.nazev }}</h3>
         <p class="lokace-popis">{{ lokace.popis }}</p>
 
         <hr>
 
         <!-- Předměty na zemi -->
-        <h4>🔍 Na zemi leží:</h4>
+        <h4>Na zemi lezi:</h4>
         {% if predmety_zde %}
             <ul class="item-list">
                 {% for predmet_id in predmety_zde %}
                     {% set p = definice_predmetu[predmet_id] %}
                     <li class="item-row">
-                        <span class="item-icon">
-                            {% if p.typ == 'zbran' %}⚔️
-                            {% elif p.typ == 'brneni' %}🛡️
-                            {% elif p.typ == 'lektvar' %}💊
-                            {% elif p.typ == 'klicovy' %}🔑
-                            {% else %}💰{% endif %}
-                        </span>
-                        <span class="item-name">{{ p.nazev }}</span>
-                        <span class="item-desc">{{ p.popis }}</span>
+                        <div class="item-info">
+                            <span class="item-name">{{ p.nazev }}</span>
+                            <span class="item-type">[{{ p.typ }}]</span>
+                            <span class="item-desc">{{ p.popis }}</span>
+                        </div>
                         <a href="{{ url_for('vezmi', id_predmetu=predmet_id) }}">
-                            <button class="btn-small">Vzít</button>
+                            <button class="btn-small">Vzit</button>
                         </a>
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p class="muted">Nic tu není.</p>
+            <p class="muted">Nic tu neni.</p>
         {% endif %}
 
         <hr>
@@ -86,26 +82,26 @@
         {% if id_lokace == 'pristav_kam_6' %}
             <div class="escape-section">
                 {% if ma_klice %}
-                    <p class="escape-ready">⛵ Člun čeká! Máš klíče – můžeš odplout!</p>
+                    <p class="escape-ready">Clun ceka! Mas klice – muzes odplout!</p>
                     <a href="{{ url_for('odplout') }}">
-                        <button class="btn-win">🏆 ODPLOUT A UNIKNOUT!</button>
+                        <button class="btn-win">ODPLOUT A UNIKNOUT!</button>
                     </a>
                 {% else %}
-                    <p class="escape-locked">⛵ Člun tu je, ale <strong>chybí ti klíče od člunu</strong>.
-                    Najdi je nejdřív!</p>
+                    <p class="escape-locked">Clun tu je, ale <strong>chybi ti klice od clunu</strong>.
+                    Najdi je nejdriv!</p>
                 {% endif %}
             </div>
             <hr>
         {% endif %}
 
         <!-- Pohyb -->
-        <h4>🧭 Pohyb:</h4>
+        <h4>Pohyb:</h4>
         <div class="movement">
             {% set smer_nazvy = {
-                'dopredu': '↑ Dopředu',
-                'dozadu': '↓ Dozadu',
-                'doleva': '← Doleva',
-                'doprava': '→ Doprava'
+                'dopredu': 'Dopredu',
+                'dozadu': 'Dozadu',
+                'doleva': 'Doleva',
+                'doprava': 'Doprava'
             } %}
             {% for smer in lokace.vychody %}
                 <a href="{{ url_for('jdi', smer=smer) }}">
