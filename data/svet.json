@@ -2,84 +2,84 @@
   "lokace": {
     "cela_start": {
       "nazev": "Zadržovací cela",
-      "popis": "Probudíš se na studené betonové podlaze s bolestí v hlavě. Nevíš, jak dlouho jsi byl v bezvědomí. Stěny jsou popsané vzkazy předchozích vězňů – jména, data, zoufalé prosby. Jeden nápis říká: 'Flash disk – záp. křídlo.' Mříže jsou pevné, ale celové dveře jsou pootevřené – strážný zřejmě zapomněl zamknout. Na zemi leží rezavá trubka. Tohle je tvoje jediná šance.",
+      "popis": "Bolest v hlavě tě probouzí. Ležíš na mokré betonové podlaze a nevíš, kolik hodin – nebo dní – jsi byl v bezvědomí. Jsi novinář a psal jsi o Magnátovi Viktoru Vaškovi. Zřejmě jsi se dostal příliš blízko pravdě. Zdi jsou popsané vzkazy těch, kdo tu byli před tebou: jména, škrábance čítající dny, a jeden úhledný nápis fixem: 'Flash disk – záp. křídlo. Klíče tam taky.' Dveře cely jsou pootevřené – strážný buď zapomněl zamknout, nebo byl právě vystřídán. Na zemi vedle tebe leží rezavá kovová trubka.",
       "vychody": {"doprava": "chodba_kam_1"},
       "predmety_zde": ["zrezivela_trubka"],
       "nepritel": null
     },
     "chodba_kam_1": {
       "nazev": "Jižní chodba",
-      "popis": "Dlouhá chodba s betonovými zdmi posetými vlhkými skvrnami. Stropní žárovky problikávají v nepravidelných intervalech. Na stěně visí kamera s přestřiženým kabelem – zřejmě sabotáž předchozího vězně. Odtud vede cesta dopředu na nádvoří nebo doprava do zahrady.",
+      "popis": "Dlouhá betonová chodba s prasklými zdmi a problikávajícími žárovkami. Na stropě visí stará bezpečnostní kamera s přestřiženým kabelem – někdo ji záměrně odpojil, možná týž člověk, který zanechal vzkaz v cele. Vzduch páchne vlhkostí a motorovým olejem. Chodba se dělí: dopředu je slyšet šum nádvoří, doprava sviští vítr od moře.",
       "vychody": {"doleva": "cela_start", "dopredu": "nadvori_kam_2", "doprava": "zahrada_kam_3"},
       "predmety_zde": [],
       "nepritel": null
     },
     "nadvori_kam_2": {
       "nazev": "Hlavní nádvoří",
-      "popis": "Poprvé od probuzení cítíš na tváři slunce. Nádvoří je obklopené vysokými zdmi s ostnatým drátem nahoře. Uprostřed stojí mramorová fontána – absurdní přepych na místě, kde jsou lidé vězněni. U zdi leží opuštěný batoh – uvnitř je lahvička s energetickým elixírem. Patrně pozůstatek po předchozím vězni, který to nestačil vzít. Vlevo vede cesta do vstupní haly vily, vpředu k fontáně.",
+      "popis": "Sluneční světlo tě zasáhne do očí. Po tmavé cele je to skoro bolestivé. Rozlehlé nádvoří obklopují čtyřmetrové zdi s ostnatým drátem – Vašek si nebere servítky. Uprostřed stojí mramorová fontána, naprosto absurdní v místě, kde jsou lidé vězněni. U zdi leží opuštěný batoh s lahvičkou elixíru uvnitř. Předchozí vězeň to nestačil vzít. Vlevo zdobené dveře do haly vily, vpředu fontána.",
       "predmety_zde": ["lektvar_olej"],
       "vychody": {"dozadu": "chodba_kam_1", "doleva": "vstupni_hala_kam_4", "dopredu": "fontana_kam_7"},
       "nepritel": null
     },
     "zahrada_kam_3": {
       "nazev": "Východní zahrady",
-      "popis": "Překvapivě pěkná zahrada s palmami a udržovaným trávníkem. Vidíš přes zeď třpytit se moře – svoboda je tak blízko, a přitom tak daleko. U keře nacházíš pomačkané bankovky – zřejmě z kapsy strážného, který tu stál na hlídce. Na konci zahrady se vlní dřevěné molo s připoutaným motorovým člunem. Doprava je přístav, dopředu garáže.",
+      "popis": "Palmová zahrada s upraveným trávníkem – absurdní kontrast s tím, co se děje za zdmi. Přes nízkou část zdi vidíš třpytit se hladinu moře. Tam je svoboda. U keře leží zmačkané bankovky, asi vypadly strážnému ze saka. Na druhém konci zahrady je vidět hnědé dřevěné molo a na něm houpající se motorový člun – tvoje jediná cesta ven. Doprava přístav, dopředu garáže.",
       "vychody": {"doleva": "chodba_kam_1", "doprava": "pristav_kam_6", "dopredu": "garaze_kam_5"},
       "predmety_zde": ["dolar", "dolar"],
       "nepritel": null
     },
     "vstupni_hala_kam_4": {
       "nazev": "Vstupní hala vily",
-      "popis": "Mramorová podlaha, zlaté lustry a obrazy slavných malířů – Magnátovo sídlo dýchá přepychem získaným špinavými penězi. Na stěně visí fotografie Magnáta s různými politiky. Strážný tě okamžitě zpozoruje a kráčí k tobě s pěstmi sevřenými. Pokud ho nedostaneš z cesty, nikam se nedostaneš.",
+      "popis": "Mramorová podlaha, zlaté lustry, obrazy za statisíce. Tohle je Vaškovo království vybudované na pašování, vydírání a korupci. Na stěně visí fotografie – Vašek s ministry, s generály, s lidmi, kteří ho měli dávno za mřížemi. Tvoje reportáž o něm by ho dostala. Proto jsi tady. Strážný tě okamžitě zpozoruje a kráčí k tobě s napřaženou pěstí. Jediná cesta zpět je doprava.",
       "vychody": {"doprava": "nadvori_kam_2"},
       "predmety_zde": [],
       "nepritel": "strazny"
     },
     "garaze_kam_5": {
       "nazev": "Garáže",
-      "popis": "Tři luxusní vozy se lesknou pod halogenovými světly. Na policích jsou nářadí, lana a bedny s neoznačeným zbožím – zřejmě pašované. Potetovaný strážce garáží tě spatří a vytasí nůž. Na polici za ním leží taktická vesta. Dál vede cesta do kanceláře ochranky.",
+      "popis": "Tři SUV s tmavými skly a bedny bez označení – někde tu je pašované zboží, ale teď na to nemáš čas. Potetovaný muž se zvedne od stolu a sahá na bok pro nůž. Tohle je jeho teritorium. Na kovové polici za ním leží taktická vesta ochranky – kdybys ji dostal, výrazně by ti to pomohlo. Dopředu vede cesta do kanceláře.",
       "vychody": {"dozadu": "zahrada_kam_3", "dopredu": "kancelar_kam_8"},
       "predmety_zde": ["vesta_ochranky"],
       "nepritel": "strazce_garazi"
     },
     "pristav_kam_6": {
       "nazev": "Přístavní molo",
-      "popis": "Srdce ti bije rychleji. Před tebou je dřevěné molo a na něm uvázaný motorový člun – tvoje jediná cesta z tohoto ostrova. Moře je klidné a na obzoru je pevnina. Stačí nastartovat motor. Ale kde jsou sakra klíče? Bez nich se nikam nedostaneš.",
+      "popis": "Dřevěné molo skřípe pod nohama. Motorový člun se houpe na vlnách a na obzoru je pevnina – vzdálená jen hodinu jízdy. Srdce ti poskočí. Pak si uvědomíš, že klíče od zapalování nejsou v zámku. Někdo je schoval. Bez klíčů motor nespustíš, a bez motoru se odtud nedostaneš.",
       "vychody": {"doleva": "zahrada_kam_3"},
       "predmety_zde": [],
       "nepritel": null
     },
     "fontana_kam_7": {
-      "nazev": "Bizarní fontána",
-      "popis": "Uprostřed fontány trčí kamenná socha – napůl člověk, napůl had – s prázdnýma vytřeštěnýma očima. Magnát ji nechal přivézt z jihovýchodní Asie jako symbol své moci. U okraje leží lahvička, kterou tu zřejmě zapomněl některý ze strážných. Vpravo kancelář ochranky, vpředu temná chodba do západního křídla.",
+      "nazev": "Fontána s božstvem",
+      "popis": "Kamenná socha napůl člověka, napůl hada trčí ze středu fontány. Vašek ji nechal dovézt z jihovýchodní Asie – prý mu přináší štěstí. Na okraji fontány leží lahvička, co si zapomněl strážný při přestávce. Vlevo kancelář ochranky, kde jsou monitory s kamerovými záznamy. Vzpomínáš si, jak jeden z vězňů popsal, co vidí na monitorech – slepá ulička, háček s klíči.",
       "vychody": {"dozadu": "nadvori_kam_2", "doprava": "kancelar_kam_8", "dopredu": "chodba_kam_9"},
       "predmety_zde": ["lektvar_olej"],
       "nepritel": null
     },
     "kancelar_kam_8": {
       "nazev": "Kancelář ochranky",
-      "popis": "Šest monitorů ukazuje záznamy z kamer po celém ostrově. Na jednom z nich vidíš slepou uličku v západním křídle – na háčku u dveří visí klíče a pod krabicí leží flash disk. To jsou věci, které potřebuješ! Na stole jsou pomačkané bankovky a studený hrnek kávy. Dál dopředu vede cesta k trezoru Magnáta – ale ten je elektronicky zajištěný.",
+      "popis": "Šest monitorů, studená káva, smrad cigaret. Na jednom monitoru vidíš záběr ze slepé uličky v západním křídle – na háčku u dveří visí klíče s přívěskem kotvy a pod krabicí leží flash disk. Přesně co psal ten člověk v cele. Musíš se tam dostat. Na stole jsou pomačkané bankovky. Dál dopředu vedou zamčené dveře k Vaškově pracovně – ale elektronický zámek potřebuje kód.",
       "vychody": {"doleva": "fontana_kam_7", "dozadu": "garaze_kam_5", "dopredu": "trezor_kam_11"},
       "predmety_zde": ["dolar"],
       "nepritel": null
     },
     "chodba_kam_9": {
       "nazev": "Západní křídlo",
-      "popis": "Tato část vily je starší a zchátralá – popraskaná omítka, zatuchlý vzduch. Zřejmě ji Magnát přestal používat. To je důvod, proč předchozí vězeň mohl schovat věci v slepé uličce, aniž by si toho strážní všimli. Doleva slepá ulička – tam jsou věci, které potřebuješ.",
+      "popis": "Staré nepoužívané křídlo vily. Omítka se loupe, vzduch páchne zatuchlinou, podlahu pokrývá prach. Vašek tuto část přestal používat – a proto sem stráže nechodí. Právě proto tu předchozí vězeň schoval věci, které mohl ukrást: klíče od člunu a přístupový disk. Doleva slepá ulička.",
       "vychody": {"dozadu": "fontana_kam_7", "doleva": "slepa_ulicka_kam_10"},
       "predmety_zde": [],
       "nepritel": null
     },
     "slepa_ulicka_kam_10": {
       "nazev": "Slepá ulička",
-      "popis": "Zaprášená místnost plná starých krabic a zapomenutého nábytku. Na zdi visí vybledlý vzkaz: 'Kdokoli to najde – toto je tvoje záchrana. Já jsem nestihl utéct. Snad ty budeš mít víc štěstí.' Pod ním na háčku visí klíče s přívěskem kotvy – KLÍČE OD ČLUNU! A za největší krabicí leží USB flash disk s nálepkou 'PŘÍSTUPOVÝ KÓD TREZORU'. Předchozí vězeň věděl, co dělá.",
+      "popis": "Zaprášená místnost plná starých krabic a odloženého nábytku. Na zdi je fixem napsáno: 'Jmenuji se Tomáš Hrubý. Byl jsem tu 43 dní. Klíče a disk jsem schoval sem – doufám, že to najde někdo, kdo to využije lépe než já.' Nedopsal. Na háčku u zdi visí klíče s přívěskem ve tvaru kotvy. Za největší krabicí leží USB flash disk s nálepkou TREZOR. Tohle je tvoje záchrana, Tomáši.",
       "vychody": {"doprava": "chodba_kam_9"},
       "predmety_zde": ["zasifrovany_disk", "klice_od_clunu"],
       "nepritel": null
     },
     "trezor_kam_11": {
-      "nazev": "Pracovna Magnáta",
-      "popis": "Mahagonový stůl, police s dokumenty o pašování a nelegálních obchodech – důkazy o zločinech za miliardy. Magnát se otočí od okna. 'Přišel jsi zemřít?' zeptá se klidně. Ví, že klíče od člunu jsi už našel – a to ho rozzuří. Tohle bude tvůj nejtěžší souboj. Poraz ho a cesta na přístav je volná.",
+      "nazev": "Pracovna Viktora Vaška",
+      "popis": "Mahagonový stůl, police s šanony plnými smluv a dokumentů – důkazů o pašování drog, zbraní a živých lidí. Toto by stačilo na doživotí. Vašek stojí u okna a otočí se pomalu, jako by tě čekal. 'Novinář,' řekne s klidným pohrdáním. 'Myslel jsem, že jsi chytřejší.' Vytáhne pistoli z pouzdra. Nemáš čas přemýšlet – buď ho dostaneš první, nebo zemřeš tady, v jeho pracovně, jako bezvýznamná statistika.",
       "vychody": {"dozadu": "kancelar_kam_8"},
       "predmety_zde": [],
       "nepritel": "magnat"
@@ -104,43 +104,36 @@
     "nuz": {
       "nazev": "Strážcův nůž",
       "typ": "zbran",
-      "popis": "Ostrý nůž strážného. Výrazně zvyšuje útok. +10 útok.",
+      "popis": "Ostrý nůž. Výrazně zvyšuje útok. +10 útok.",
       "bonus_utok": 10,
       "bonus_obrana": 0
     },
     "vesta_ochranky": {
       "nazev": "Taktická vesta",
       "typ": "brneni",
-      "popis": "Těžká neprůstřelná vesta ochranky. +10 obrana.",
+      "popis": "Neprůstřelná vesta ochranky. +10 obrana.",
       "bonus_utok": 0,
       "bonus_obrana": 10
     },
     "lektvar_olej": {
       "nazev": "Energetický elixír",
       "typ": "lektvar",
-      "popis": "Tajemná tekutina. Obnoví 30 životů.",
+      "popis": "Tajemná tekutina v lahvičce. Obnoví 30 životů.",
       "bonus_utok": 0,
       "bonus_obrana": 0,
       "obnova_zivotu": 30
     },
-    "zaznamnik": {
-      "nazev": "Zápisník strážného",
-      "typ": "klicovy",
-      "popis": "Zápisník s kódy a plánky vily. Cenné informace o ostrově.",
-      "bonus_utok": 0,
-      "bonus_obrana": 0
-    },
     "zasifrovany_disk": {
       "nazev": "Přístupový flash disk",
       "typ": "klicovy",
-      "popis": "USB flash disk s kódem pro trezor Magnáta. Bez něj se do trezoru nedostaneš!",
+      "popis": "USB flash disk s přístupovým kódem k trezoru Vaška. Bez něj se do pracovny nedostaneš.",
       "bonus_utok": 0,
       "bonus_obrana": 0
     },
     "klice_od_clunu": {
       "nazev": "Klíče od člunu",
       "typ": "klicovy",
-      "popis": "Klíče od motorového člunu u přístavu. S nimi konečně odplujete!",
+      "popis": "Klíče od motorového člunu na přístavním mole. S těmi konečně odplujete.",
       "bonus_utok": 0,
       "bonus_obrana": 0
     }
@@ -148,7 +141,7 @@
   "nepratele": {
     "strazny": {
       "nazev": "Strážný",
-      "popis": "Svalnatý muž v uniformě. Nedůvěřuje cizincům.",
+      "popis": "Svalnatý muž v uniformě. Neotáčí se za každou myší.",
       "hp": 35,
       "max_hp": 35,
       "utok": 12,
@@ -157,7 +150,7 @@
     },
     "strazce_garazi": {
       "nazev": "Strážce garáží",
-      "popis": "Potetovaný ozbrojený muž hlídající garáže.",
+      "popis": "Potetovaný muž s nožem. Hlídá garáže a neptá se na jméno.",
       "hp": 45,
       "max_hp": 45,
       "utok": 15,
@@ -165,8 +158,8 @@
       "drop": "lektvar_olej"
     },
     "magnat": {
-      "nazev": "Magnát",
-      "popis": "Dobře oblečený muž s chladným pohledem. Nebezpečný a zákeřný.",
+      "nazev": "Viktor Vašek",
+      "popis": "Dobře oblečený muž s chladným pohledem a pistolí v ruce.",
       "hp": 60,
       "max_hp": 60,
       "utok": 18,
