@@ -2,7 +2,7 @@
   "lokace": {
     "cela_start": {
       "nazev": "Zadržovací cela",
-      "popis": "Bolest v hlavě tě probouzí. Ležíš na mokré betonové podlaze a nevíš, kolik hodin – nebo dní – jsi byl v bezvědomí. Jsi novinář a psal jsi o Magnátovi Viktoru Vaškovi. Zřejmě jsi se dostal příliš blízko pravdě. Zdi jsou popsané vzkazy těch, kdo tu byli před tebou: jména, škrábance čítající dny, a jeden úhledný nápis fixem: 'Flash disk je na záp. křídle. Klíče tam taky.' Dveře cely jsou pootevřené. Strážný buď zapomněl zamknout, nebo byl právě vystřídán. Na zemi vedle tebe leží rezavá kovová trubka.",
+      "popis": "Bolest v hlavě tě probouzí. Ležíš na mokré betonové podlaze a nevíš, kolik hodin nebo dní jsi byl v bezvědomí. Jsi novinář a psal jsi o Magnátovi Viktoru Vaškovi. Zřejmě jsi se dostal příliš blízko pravdě. Zdi jsou popsané vzkazy těch, kdo tu byli před tebou: jména, škrábance čítající dny, a jeden úhledný nápis fixem: 'Flash disk je na záp. křídle. Klíče tam taky.' Dveře cely jsou pootevřené. Strážný buď zapomněl zamknout, nebo byl právě vystřídán. Na zemi vedle tebe leží rezavá kovová trubka.",
       "vychody": {"doprava": "chodba_kam_1"},
       "predmety_zde": ["zrezivela_trubka"],
       "nepritel": null

@@ -12,12 +12,12 @@ def nacti_svet() -> dict:
 def ziskej_mapu(aktualni_id: str) -> str:
     #Vrátí ASCII mapu ostrova s označením aktuální polohy hráče. Každá lokace je označena zkratkou. hráčova pozice nahrazena [ *TY* ]
     mapa = (
-        "  [SLP.UL]--[Z.KRILO]    [PRACOVNA]\n"
-        "                 |           |\n"
-        "             [FONTANA]---[KANCELAR]+\n"
-        "                 |           |\n"
+        "  [SLP.UL]--[Z.KRILO]   [PRACOVNA]\n"
+        "                |           |\n"
+        "            [FONTANA]---[KANCELAR]\n"
+        "                |           |\n"
         "  [V.HALA]--[NADVORI]   [GARAZE]\n"
-        "                 |           |\n"
+        "                |           |\n"
         "  [  CELA]--[CHODBA ]---[ZAHRADA]--[PRISTAV]"
     )
 
