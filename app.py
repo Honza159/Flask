@@ -5,13 +5,9 @@ from game.inventar import Inventar, MAX_SLOTS
 from game.souboj import vypocti_poskozeni
 
 app = Flask(__name__)
-app.secret_key = 'tajny_klic_uteku_z_ostrova_2024'
+app.secret_key = 'tajny_klic_uteku_z_ostrova'
 
-
-# -----------------------------------------------------------------------
-# POMOCNA FUNKCE - zkrati opakujici se kod
 # vrati hrdinu + jeho utok a obranu ze session
-# -----------------------------------------------------------------------
 def get_hrdina_stats():
     svet_data = nacti_svet()
     hrdina = Hrdina(session['jmeno_hrdiny'], session['hrdina_hp'], session['hrdina_max_hp'])
@@ -19,9 +15,7 @@ def get_hrdina_stats():
     return svet_data, utok, obrana
 
 
-# -----------------------------------------------------------------------
-# UVODNI STRANKA - zadani jmena, inicializace nove hry
-# -----------------------------------------------------------------------
+# UVODNI STRANKA - zadani jmena, nova hra
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -55,9 +49,8 @@ def index():
     return render_template('index.html')
 
 
-# -----------------------------------------------------------------------
-# HLAVNI STRANKA HRY - zobrazeni lokace, mapy, predmetu
-# -----------------------------------------------------------------------
+
+# HLAVNI STRANKA HRY - zobrazeni lokace,story a pohyb
 @app.route('/hra')
 def hra():
     if 'jmeno_hrdiny' not in session:
@@ -67,26 +60,26 @@ def hra():
     id_lokace = session['aktualni_lokace']
 
     return render_template('hra.html',
-        jmeno        = session['jmeno_hrdiny'],
-        lokace       = svet_data['lokace'][id_lokace],
-        id_lokace    = id_lokace,
-        mapa         = ziskej_mapu(id_lokace),
+        jmeno = session['jmeno_hrdiny'],
+        lokace = svet_data['lokace'][id_lokace],
+        id_lokace = id_lokace,
+        mapa = ziskej_mapu(id_lokace),
         predmety_zde = session['mapa_predmetu'][id_lokace],
         definice_predmetu = svet_data['predmety'],
-        hp           = session['hrdina_hp'],
-        max_hp       = session['hrdina_max_hp'],
-        utok         = utok,
-        obrana       = obrana,
-        zprava       = session.pop('herni_zprava', None),
-        ma_klice     = 'klice_od_clunu' in session['inventar'],
-        pocet_slotu  = len(session['inventar']),
-        max_slotu    = MAX_SLOTS
+        hp = session['hrdina_hp'],
+        max_hp  = session['hrdina_max_hp'],
+        utok = utok,
+        obrana = obrana,
+        zprava = session.pop('herni_zprava', None),
+        ma_klice = 'klice_od_clunu' in session['inventar'],
+        pocet_slotu = len(session['inventar']),
+        max_slotu = MAX_SLOTS
     )
 
 
-# -----------------------------------------------------------------------
-# POHYB - hrac klikne na smer (doleva/doprava/dopredu/dozadu)
-# -----------------------------------------------------------------------
+
+# POHYB - doleva/doprava/dopredu/dozadu
+
 @app.route('/jdi/<smer>')
 def jdi(smer):
     if 'aktualni_lokace' not in session:
@@ -111,7 +104,7 @@ def jdi(smer):
 
     session['aktualni_lokace'] = cil
 
-    # je v cilove lokaci zijici nepritel? → spustit souboj
+    # je v cilove lokaci zijici nepritel? ano, tak spustit souboj
     nepritel_id = svet_data['lokace'][cil].get('nepritel')
     if nepritel_id and session['nepratele'][nepritel_id]['hp'] > 0:
         session['zprava_souboj'] = f"Cestu ti zablokoval {session['nepratele'][nepritel_id]['nazev']}!"
@@ -120,9 +113,8 @@ def jdi(smer):
     return redirect(url_for('hra'))
 
 
-# -----------------------------------------------------------------------
-# ODPLOUT - win condition, hrac ma klice a je na pristavnim mole
-# -----------------------------------------------------------------------
+
+# ODPLOUT - win condition
 @app.route('/odplout')
 def odplout():
     if 'klice_od_clunu' not in session.get('inventar', []):
@@ -131,9 +123,7 @@ def odplout():
     return redirect(url_for('konec', vysledek='vyhra'))
 
 
-# -----------------------------------------------------------------------
 # INVENTAR - zobrazeni vsech predmetu u hrace
-# -----------------------------------------------------------------------
 @app.route('/inventar')
 def inventar_stranka():
     if 'jmeno_hrdiny' not in session:
@@ -142,15 +132,15 @@ def inventar_stranka():
     svet_data, utok, obrana = get_hrdina_stats()
 
     return render_template('inventar.html',
-        inventar          = session['inventar'],
+        inventar = session['inventar'],
         definice_predmetu = svet_data['predmety'],
-        hp                = session['hrdina_hp'],
-        max_hp            = session['hrdina_max_hp'],
-        utok              = utok,
-        obrana            = obrana,
-        zprava            = session.pop('inventar_zprava', None),
-        pocet_slotu       = len(session['inventar']),
-        max_slotu         = MAX_SLOTS
+        hp = session['hrdina_hp'],
+        max_hp = session['hrdina_max_hp'],
+        utok = utok,
+        obrana = obrana,
+        zprava = session.pop('inventar_zprava', None),
+        pocet_slotu = len(session['inventar']),
+        max_slotu = MAX_SLOTS
     )
 
 
@@ -203,18 +193,17 @@ def vyhod(id_predmetu):
     return redirect(url_for('inventar_stranka'))
 
 
-# -----------------------------------------------------------------------
+
 # SOUBOJ - zobrazeni soubojove obrazovky
-# -----------------------------------------------------------------------
 @app.route('/souboj')
 def souboj():
     if 'aktualni_lokace' not in session:
         return redirect(url_for('index'))
 
     svet_data, utok, obrana = get_hrdina_stats()
-    id_lokace    = session['aktualni_lokace']
-    nepritel_id  = svet_data['lokace'][id_lokace]['nepritel']
-    nepritel     = session['nepratele'][nepritel_id]
+    id_lokace = session['aktualni_lokace']
+    nepritel_id = svet_data['lokace'][id_lokace]['nepritel']
+    nepritel = session['nepratele'][nepritel_id]
 
     # seznam lektvaru ktere ma hrac u sebe (muzou se pouzit v souboji)
     lektvary = [
@@ -223,18 +212,18 @@ def souboj():
     ]
 
     return render_template('souboj.html',
-        hp       = session['hrdina_hp'],
-        max_hp   = session['hrdina_max_hp'],
-        utok     = utok,
-        obrana   = obrana,
+        hp = session['hrdina_hp'],
+        max_hp = session['hrdina_max_hp'],
+        utok = utok,
+        obrana = obrana,
         nepritel = nepritel,
-        zprava   = session.pop('zprava_souboj', 'Boj začíná!'),
+        zprava = session.pop('zprava_souboj', 'Boj začíná!'),
         lektvary = lektvary,
         definice_predmetu = svet_data['predmety']
     )
 
 
-# pouzit lektvar primo behem souboje - nepritel pak zautoCI (prominuty tah)
+# pouzit lektvar primo behem souboje - nepritel pak zautoci
 @app.route('/pouzi_v_souboji/<id_predmetu>')
 def pouzi_v_souboji(id_predmetu):
     if 'aktualni_lokace' not in session:
@@ -247,14 +236,14 @@ def pouzi_v_souboji(id_predmetu):
     predmet      = svet_data['predmety'].get(id_predmetu, {})
 
     if id_predmetu in session['inventar'] and predmet.get('typ') == 'lektvar':
-        # hrac se lecí - ale ztraci tah, nepritel zautoCI
+        # hrac se lecí - ale ztraci tah
         nove_hp, zprava_lektvaru = Inventar.pouzij_lektvar(
             id_predmetu, session['hrdina_hp'], session['hrdina_max_hp'], svet_data['predmety']
         )
         session['hrdina_hp'] = nove_hp
         session['inventar'].remove(id_predmetu)
 
-        # utok nepritele za prominuty tah
+        # utok nepritele
         hrdina = Hrdina(session['jmeno_hrdiny'], session['hrdina_hp'], session['hrdina_max_hp'])
         _, obrana = hrdina.spocti_statistiky(session['inventar'], svet_data['predmety'])
         dmg = vypocti_poskozeni(nepritel['utok'], obrana)
@@ -269,9 +258,7 @@ def pouzi_v_souboji(id_predmetu):
     return redirect(url_for('souboj'))
 
 
-# -----------------------------------------------------------------------
 # AKCE V SOUBOJI - utok nebo utek
-# -----------------------------------------------------------------------
 @app.route('/akce_souboj/<akce>')
 def akce_souboj(akce):
     if 'aktualni_lokace' not in session:
@@ -282,13 +269,13 @@ def akce_souboj(akce):
     nepritel_id = svet_data['lokace'][id_lokace]['nepritel']
     nepritel    = session['nepratele'][nepritel_id]
 
-    # --- UTEK - hrac se vraci do cely ---
+    #UTEK - hrac se vraci do cely
     if akce == 'utek':
         session['aktualni_lokace'] = 'cela_start'
         session['herni_zprava'] = "Utekl jsi v panice zpět do cely."
         return redirect(url_for('hra'))
 
-    # --- UTOK HRACE na nepritele ---
+    #UTOK HRACE na nepritele
     if akce == 'utok':
         hrdina = Hrdina(session['jmeno_hrdiny'], session['hrdina_hp'], session['hrdina_max_hp'])
         utok_h, obrana_h = hrdina.spocti_statistiky(session['inventar'], svet_data['predmety'])
@@ -298,7 +285,7 @@ def akce_souboj(akce):
         nepritel['hp'] -= dmg_na_nepritele
         session.modified = True
 
-        # nepritel mrtvy → loot + navrat do hry
+        # nepritel mrtvy. loot + navrat do hry
         if nepritel['hp'] <= 0:
             drop_id     = svet_data['nepratele'][nepritel_id].get('drop')
             zprava_loot = ""
@@ -314,7 +301,7 @@ def akce_souboj(akce):
             session.modified = True
             return redirect(url_for('hra'))
 
-        # nepritel zije → utoci zpet na hrace
+        # nepritel zije. utoci zpet na hrace
         dmg_na_hrace = vypocti_poskozeni(nepritel['utok'], obrana_h)
         session['hrdina_hp'] -= dmg_na_hrace
 
@@ -330,9 +317,8 @@ def akce_souboj(akce):
     return redirect(url_for('souboj'))
 
 
-# -----------------------------------------------------------------------
+
 # KONEC HRY - vyhra nebo prohra, vymaze session
-# -----------------------------------------------------------------------
 @app.route('/konec/<vysledek>')
 def konec(vysledek):
     session.clear()
