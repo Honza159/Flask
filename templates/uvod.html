@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Útěk z tajemného ostrova</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="game-container">
+
+    <h1>Útěk z tajemného ostrova</h1>
+    <hr>
+
+    <!-- uvodni text - kdo jsi a co mas delat -->
+    <div class="intro-text">
+        <p>Probudil ses v zamčené cele na soukromém ostrově. Kolem tebe jen beton, mříže
+        a ticho přerušované vzdáleným šumem moře.</p>
+        <p>Nevíš, jak ses sem dostal, ale <strong>musíš odtud pryč</strong>.
+        Prozkoumej ostrov, poraz stráže, najdi přístupový kód k trezoru
+        a získej klíče od člunu.</p>
+        <p class="tip">Mapa: 12 lokací | Souboje | Inventář (8 slotů) | Klíčové předměty</p>
+    </div>
+
+    <hr>
+
+    <!-- formular pro zadani jmena hrdiny, POST odesle do / -->
+    <form method="POST">
+        <label for="jmeno"><h3>Zadej jméno svého hrdiny:</h3></label>
+        <input type="text" id="jmeno" name="jmeno" required autocomplete="off"
+               placeholder="Např. Karel, Anna...">
+        <button type="submit" class="btn-primary">Začít dobrodružství</button>
+    </form>
+
+</div>
+</body>
+</html>

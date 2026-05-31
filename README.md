@@ -105,8 +105,8 @@ game/
   mapa.py           -- načítání světa, ASCII mapa
   souboj.py         -- výpočet poškození
 templates/
-  index.html        -- úvodní stránka
-  hra.html          -- hlavní herní obrazovka
+  uvod.html         -- úvodní stránka (zadání jména)
+  index.html        -- hlavní herní obrazovka
   souboj.html       -- soubojová obrazovka
   inventar.html     -- stránka batohu
   konec.html        -- výhra / prohra

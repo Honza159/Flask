@@ -22,7 +22,7 @@ def index():
     if request.method == 'POST':
         jmeno = request.form.get('jmeno', '').strip()
         if not jmeno:
-            return render_template('index.html')
+            return render_template('uvod.html')
 
         svet_data = nacti_svet()
         session.clear()
@@ -45,7 +45,7 @@ def index():
         }
 
         return redirect(url_for('hra'))
-    return render_template('index.html')
+    return render_template('uvod.html')
 
 
 # HLAVNI STRANKA HRY - lokace, mapa, predmety na zemi, pohyb
@@ -57,7 +57,7 @@ def hra():
     svet_data, utok, obrana = get_hrdina_stats()
     id_lokace = session['aktualni_lokace']
 
-    return render_template('hra.html',
+    return render_template('index.html',
         jmeno             = session['jmeno_hrdiny'],
         lokace            = svet_data['lokace'][id_lokace],
         id_lokace         = id_lokace,
