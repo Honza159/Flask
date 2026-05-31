@@ -19,14 +19,14 @@
             <div class="combat-player">
                 <h4>Ty</h4>
                 <div class="hp-bar-wrapper">
-                    <span class="hp-label">Zivoty: {{ hp }} / {{ max_hp }}</span>
+                    <span class="hp-label">Životy: {{ hp }} / {{ max_hp }}</span>
                     <div class="hp-bar-bg">
                         <div class="hp-bar-fill {% if hp < max_hp * 0.3 %}hp-low{% elif hp < max_hp * 0.6 %}hp-mid{% endif %}"
                              style="width: {{ ((hp / max_hp) * 100) | int }}%"></div>
                     </div>
                 </div>
                 <ul class="stat-list">
-                    <li>Utok: <strong>{{ utok }}</strong></li>
+                    <li>Útok: <strong>{{ utok }}</strong></li>
                     <li>Obrana: <strong>{{ obrana }}</strong></li>
                 </ul>
             </div>
@@ -36,14 +36,14 @@
             <div class="combat-enemy">
                 <h4>{{ nepritel.nazev }}</h4>
                 <div class="hp-bar-wrapper">
-                    <span class="hp-label">Zivoty: {{ nepritel.hp }} / {{ nepritel.max_hp }}</span>
+                    <span class="hp-label">Životy: {{ nepritel.hp }} / {{ nepritel.max_hp }}</span>
                     <div class="hp-bar-bg">
                         <div class="hp-bar-fill hp-enemy"
                              style="width: {{ ((nepritel.hp / nepritel.max_hp) * 100) | int }}%"></div>
                     </div>
                 </div>
                 <ul class="stat-list">
-                    <li>Utok: <strong>{{ nepritel.utok }}</strong></li>
+                    <li>Útok: <strong>{{ nepritel.utok }}</strong></li>
                     <li>Obrana: <strong>{{ nepritel.obrana }}</strong></li>
                 </ul>
             </div>
@@ -55,18 +55,18 @@
         <h4>Zvol akci:</h4>
         <div class="combat-actions">
             <a href="{{ url_for('akce_souboj', akce='utok') }}">
-                <button class="btn-attack">Zautoct</button>
+                <button class="btn-attack">Zaútočit</button>
             </a>
 
             <a href="{{ url_for('akce_souboj', akce='utek') }}">
-                <button class="btn-flee">Utect (zpet do cely)</button>
+                <button class="btn-flee">Utéct (zpět do cely)</button>
             </a>
         </div>
 
         <!-- Použití léčiva přímo v souboji -->
         {% if lektvary %}
             <div class="combat-heal">
-                <h4>Pouzit lektvar (nepritel zautoct za tvuj tah):</h4>
+                <h4>Použít lektvar (nepřítel zaútočí za tvůj tah):</h4>
                 <div class="item-actions">
                     {% for pid in lektvary %}
                         <a href="{{ url_for('pouzi_v_souboji', id_predmetu=pid) }}">

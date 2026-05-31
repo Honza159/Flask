@@ -15,7 +15,7 @@
                 <span class="hud-name">{{ jmeno }}</span>
             </div>
             <div class="hud-right">
-                <span>Utok: {{ utok }}</span>
+                <span>Útok: {{ utok }}</span>
                 <span>Obrana: {{ obrana }}</span>
                 <span>Batoh: {{ pocet_slotu }}/{{ max_slotu }}</span>
             </div>
@@ -23,7 +23,7 @@
 
         <!-- HP bar -->
         <div class="hp-bar-wrapper">
-            <span class="hp-label">Zivoty: {{ hp }} / {{ max_hp }}</span>
+            <span class="hp-label">Životy: {{ hp }} / {{ max_hp }}</span>
             <div class="hp-bar-bg">
                 <div class="hp-bar-fill {% if hp < max_hp * 0.3 %}hp-low{% elif hp < max_hp * 0.6 %}hp-mid{% endif %}"
                      style="width: {{ ((hp / max_hp) * 100) | int }}%"></div>
@@ -55,7 +55,7 @@
         <hr>
 
         <!-- Předměty na zemi -->
-        <h4>Na zemi lezi:</h4>
+        <h4>Na zemi leží:</h4>
         {% if predmety_zde %}
             <ul class="item-list">
                 {% for predmet_id in predmety_zde %}
@@ -67,13 +67,13 @@
                             <span class="item-desc">{{ p.popis }}</span>
                         </div>
                         <a href="{{ url_for('vezmi', id_predmetu=predmet_id) }}">
-                            <button class="btn-small">Vzit</button>
+                            <button class="btn-small">Vzít</button>
                         </a>
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p class="muted">Nic tu neni.</p>
+            <p class="muted">Nic tu není.</p>
         {% endif %}
 
         <hr>
@@ -82,13 +82,13 @@
         {% if id_lokace == 'pristav_kam_6' %}
             <div class="escape-section">
                 {% if ma_klice %}
-                    <p class="escape-ready">Clun ceka! Mas klice – muzes odplout!</p>
+                    <p class="escape-ready">Člun čeká! Máš klíče – můžeš odplout!</p>
                     <a href="{{ url_for('odplout') }}">
                         <button class="btn-win">ODPLOUT A UNIKNOUT!</button>
                     </a>
                 {% else %}
-                    <p class="escape-locked">Clun tu je, ale <strong>chybi ti klice od clunu</strong>.
-                    Najdi je nejdriv!</p>
+                    <p class="escape-locked">Člun tu je, ale <strong>chybí ti klíče od člunu</strong>.
+                    Najdi je nejdřív!</p>
                 {% endif %}
             </div>
             <hr>
@@ -98,7 +98,7 @@
         <h4>Pohyb:</h4>
         <div class="movement">
             {% set smer_nazvy = {
-                'dopredu': 'Dopredu',
+                'dopredu': 'Dopředu',
                 'dozadu': 'Dozadu',
                 'doleva': 'Doleva',
                 'doprava': 'Doprava'
