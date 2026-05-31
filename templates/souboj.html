@@ -10,7 +10,7 @@
 
     <h2 class="combat-title">SOUBOJ!</h2>
 
-    <!-- zprava z predchoziho tahu (DMG, lektvar atd.) -->
+    <!-- zprava z predchoziho tahu -->
     <div class="zprava">{{ zprava }}</div>
 
     <hr>
@@ -27,7 +27,7 @@
                     <div class="hp-bar-fill
                         {% if hp < max_hp * 0.3 %}hp-low
                         {% elif hp < max_hp * 0.6 %}hp-mid{% endif %}"
-                        style="width: {{ ((hp / max_hp) * 100)|int }}%">
+                        style="width:{{ ((hp / max_hp) * 100)|int }}%">
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
         </a>
     </div>
 
-    <!-- pouziti lektvaru primo v souboji (stoji tah - nepritel pak zautoCI) -->
+    <!-- pouziti lektvaru primo v souboji (stoji tah - nepritel pak zautoci) -->
     {% if lektvary %}
         <div class="combat-heal">
             <h4>Použít lektvar (nepřítel zaútočí za tvůj tah):</h4>

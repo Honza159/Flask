@@ -86,7 +86,7 @@ Viz `requirements.txt`.
 
 | Knihovna | Účel |
 |---|---|
-| Flask | webový framework, routování, session, šablony (Jinja2) |
+| Flask | webový framework, routování, session|
 
 Standardní knihovny Pythonu: `json`, `os`, `random`.
 

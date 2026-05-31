@@ -38,12 +38,12 @@
 
     <hr>
 
-    <!-- zprava z minule akce (sebrani predmetu, vysledek souboje atd.) -->
+    <!-- zprava z minule akce -->
     {% if zprava %}
         <div class="zprava">{{ zprava }}</div>
     {% endif %}
 
-    <!-- ASCII mapa - staticka, jen aktualni pozice blik jako [ *TY* ] -->
+    <!-- ASCII mapa -->
     <div class="map-box"><pre>{{ mapa }}</pre></div>
 
     <!-- nazev a popis aktualni lokace -->
@@ -77,7 +77,7 @@
 
     <hr>
 
-    <!-- tlacitko odplout - zobrazuje se jen na pristavu -->
+    <!-- tlacitko odplout, který se zobrazuje se jen na pristavu -->
     {% if id_lokace == 'pristav_kam_6' %}
         <div style="margin-bottom:12px">
         {% if ma_klice %}
@@ -93,7 +93,7 @@
         <hr>
     {% endif %}
 
-    <!-- pohybova tlacitka - smer odpovida vychodu v svet.json -->
+    <!-- pohybova tlacitka -->
     <h4>Pohyb:</h4>
     <div class="movement">
         {% set nazvy = {'dopredu':'Dopředu','dozadu':'Dozadu','doleva':'Doleva','doprava':'Doprava'} %}

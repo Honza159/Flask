@@ -1,11 +1,7 @@
-# inventar.py - sprava batohu hrace
-# MAX_SLOTS = maximalni pocet predmetu v batohu najednou
-
 MAX_SLOTS = 8
 
-
 class Predmet:
-    # jeden predmet ve hre - nazev, typ, bonusy atd.
+    # jeden predmet ve hre má nazev, typ, bonusy atd
 
     def __init__(self, predmet_id: str, data: dict):
         self.id           = predmet_id
@@ -31,7 +27,7 @@ class Inventar:
     @staticmethod
     def pouzij_lektvar(predmet_id: str, aktualni_hp: int, max_hp: int,
                        definice_predmetu: dict) -> tuple:
-        # pouziti lektvaru - vrati (nove_hp, zprava_pro_hrace)
+        # pouziti lektvaru vrati (nove_hp, zprava_pro_hrace)
         predmet = definice_predmetu.get(predmet_id)
         if not predmet or predmet.get('typ') != 'lektvar':
             return aktualni_hp, "Tento předmět nejde použít jako lektvar."

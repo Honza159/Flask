@@ -1,9 +1,6 @@
-# hrdina.py - trida pro hrace
-# uchovava jmeno, HP a pocita utok/obranu vcetne bonusu z inventare
-
 class Hrdina:
 
-    # zakladni hodnoty bez vybaveni
+    # zakladni hodnoty
     BASE_UTOK   = 10
     BASE_OBRANA = 5
 
@@ -31,7 +28,7 @@ class Hrdina:
         return self.hp > 0
 
     def procento_hp(self) -> int:
-        # pro HP bar v sablone - vraci 0-100
+        # pro HP bar v sablone. vraci 0-100
         if self.max_hp == 0:
             return 0
         return max(0, min(100, int(self.hp / self.max_hp * 100)))

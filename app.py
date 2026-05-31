@@ -38,7 +38,7 @@ def index():
             for loc_id, loc in svet_data['lokace'].items()
         }
 
-        # kopie nepriatel ze JSON - sledujeme aktualni HP behem hry
+        # kopie nepriatel ze JSON - sleduje aktualni HP behem hry
         session['nepratele'] = {
             nid: dict(ndata)
             for nid, ndata in svet_data['nepratele'].items()
@@ -205,7 +205,7 @@ def souboj():
     )
 
 
-# pouzit lektvar primo v souboji - stoji tah, nepritel pak zautoci
+# pouzit lektvar primo v souboji. stoji tah a nepritel pak zautoci
 @app.route('/pouzi_v_souboji/<id_predmetu>')
 def pouzi_v_souboji(id_predmetu):
     svet_data   = nacti_svet()
@@ -221,7 +221,7 @@ def pouzi_v_souboji(id_predmetu):
         session['hrdina_hp'] = nove_hp
         session['inventar'].remove(id_predmetu)
 
-        # utok nepritele za prominuty tah hrace
+        # utok nepritele za tah hrace
         hrdina = Hrdina(session['jmeno_hrdiny'], session['hrdina_hp'], session['hrdina_max_hp'])
         _, obrana = hrdina.spocti_statistiky(session['inventar'], svet_data['predmety'])
         dmg = vypocti_poskozeni(nepritel['utok'], obrana)
@@ -236,7 +236,7 @@ def pouzi_v_souboji(id_predmetu):
     return redirect(url_for('souboj'))
 
 
-# AKCE V SOUBOJI - utok nebo utek
+# AKCE V SOUBOJI. utok nebo utek
 @app.route('/akce_souboj/<akce>')
 def akce_souboj(akce):
     svet_data   = nacti_svet()
@@ -244,13 +244,13 @@ def akce_souboj(akce):
     nepritel_id = svet_data['lokace'][id_lokace]['nepritel']
     nepritel    = session['nepratele'][nepritel_id]
 
-    # utek - hrac se okamzite vraci do startovaci cely
+    # utek. hrac se okamzite vraci do startovaci cely
     if akce == 'utek':
         session['aktualni_lokace'] = 'cela_start'
         session['herni_zprava'] = "Utekl jsi v panice zpět do cely."
         return redirect(url_for('hra'))
 
-    # utok uzivatele na nepritele
+    # utok. uzivatele na nepritele
     if akce == 'utok':
         hrdina = Hrdina(session['jmeno_hrdiny'], session['hrdina_hp'], session['hrdina_max_hp'])
         utok_h, obrana_h = hrdina.spocti_statistiky(session['inventar'], svet_data['predmety'])
@@ -259,7 +259,7 @@ def akce_souboj(akce):
         nepritel['hp'] -= dmg_na_nepritele
         session.modified = True
 
-        # nepritel mrtvy - loot a navrat do hry
+        # nepritel mrtvy. loot a navrat do hry
         if nepritel['hp'] <= 0:
             drop_id     = svet_data['nepratele'][nepritel_id].get('drop')
             zprava_loot = ""
@@ -275,7 +275,7 @@ def akce_souboj(akce):
             session.modified = True
             return redirect(url_for('hra'))
 
-        # nepritel prezil - utoci zpet na hrace
+        # nepritel prezil. utoci zpet na hrace
         dmg_na_hrace = vypocti_poskozeni(nepritel['utok'], obrana_h)
         session['hrdina_hp'] -= dmg_na_hrace
 
@@ -291,7 +291,7 @@ def akce_souboj(akce):
     return redirect(url_for('souboj'))
 
 
-# KONEC HRY - vyhra nebo prohra, vymaze celu session
+# KONEC HRY. vyhra nebo prohra, vymaze celu session
 @app.route('/konec/<vysledek>')
 def konec(vysledek):
     session.clear()
