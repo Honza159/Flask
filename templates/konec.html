@@ -2,35 +2,35 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Útěk z ostrova – Konec</title>
+    <title>Konec hry</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="game-container end-container">
+<div class="game-container end-container">
 
-        {% if vysledek == 'vyhra' %}
-            <div class="end-win">
-                <h1 class="win-title">ÚTĚK SE ZDAŘIL!</h1>
-                <p>Porazil jsi Magnáta, získal jsi klíče od člunu a úspěšně odplul
-                z tajemného ostrova na svobodu.</p>
-                <p>Tvůj příběh přežití bude vyprávěn ještě dlouho.</p>
-            </div>
-        {% else %}
-            <div class="end-lose">
-                <h1 class="lose-title">ZEMŘEL JSI</h1>
-                <p>Tvoje životy klesly na 0. Ostrov pohltil dalšího nešťastníka.</p>
-                <p>Možná příště budeš opatrnější...</p>
-            </div>
-        {% endif %}
-
-        <hr>
-        <div style="text-align: center;">
-            <a href="{{ url_for('index') }}">
-                <button class="btn-primary">Hrát znovu od začátku</button>
-            </a>
+    <!-- vysledek = 'vyhra' nebo 'prohra', posila se z /konec/<vysledek> -->
+    {% if vysledek == 'vyhra' %}
+        <div class="end-win">
+            <h1 class="win-title">ÚTĚK SE ZDAŘIL!</h1>
+            <p>Porazil jsi Magnáta, získal jsi klíče od člunu a úspěšně odplul
+            z tajemného ostrova na svobodu.</p>
+            <p>Tvůj příběh přežití bude vyprávěn ještě dlouho.</p>
         </div>
+    {% else %}
+        <div class="end-lose">
+            <h1 class="lose-title">ZEMŘEL JSI</h1>
+            <p>Tvoje životy klesly na 0. Ostrov pohltil dalšího nešťastníka.</p>
+            <p>Možná příště budeš opatrnější...</p>
+        </div>
+    {% endif %}
 
+    <hr>
+    <div style="text-align:center">
+        <a href="{{ url_for('index') }}">
+            <button class="btn-primary">Hrát znovu od začátku</button>
+        </a>
     </div>
+
+</div>
 </body>
 </html>

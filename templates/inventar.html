@@ -2,84 +2,76 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Útěk z ostrova – Batoh</title>
+    <title>Batoh</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="game-container">
-        <h2>Tvůj batoh</h2>
+<div class="game-container">
 
-        <!-- Statistiky hrdiny -->
-        <div class="inv-stats">
-            <div class="inv-stat">
-                <span class="inv-stat-label">Životy</span>
-                <div class="hp-bar-wrapper">
-                    <span class="hp-label">{{ hp }} / {{ max_hp }}</span>
-                    <div class="hp-bar-bg">
-                        <div class="hp-bar-fill {% if hp < max_hp * 0.3 %}hp-low{% elif hp < max_hp * 0.6 %}hp-mid{% endif %}"
-                             style="width: {{ ((hp / max_hp) * 100) | int }}%"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="inv-stat-row">
-                <span>Útok: <strong>{{ utok }}</strong></span>
-                <span>Obrana: <strong>{{ obrana }}</strong></span>
-                <span class="slot-info {% if pocet_slotu >= max_slotu %}slot-full{% endif %}">
-                    Sloty: <strong>{{ pocet_slotu }} / {{ max_slotu }}</strong>
-                    {% if pocet_slotu >= max_slotu %} - PLNÝ!{% endif %}
-                </span>
+    <h2>Tvůj batoh</h2>
+
+    <!-- statistiky hrdiny - HP + utok/obrana + pocet slotu -->
+    <div class="hp-bar-wrapper">
+        <span class="hp-label">Životy: {{ hp }} / {{ max_hp }}</span>
+        <div class="hp-bar-bg">
+            <div class="hp-bar-fill
+                {% if hp < max_hp * 0.3 %}hp-low
+                {% elif hp < max_hp * 0.6 %}hp-mid{% endif %}"
+                style="width: {{ ((hp / max_hp) * 100)|int }}%">
             </div>
         </div>
-
-        <hr>
-
-        {% if zprava %}
-            <div class="zprava">{{ zprava }}</div>
-        {% endif %}
-
-        <!-- Seznam předmětů -->
-        <h4>Věci u sebe:</h4>
-        {% if inventar %}
-            <ul class="item-list">
-                {% for predmet_id in inventar %}
-                    {% set p = definice_predmetu[predmet_id] %}
-                    <li class="item-row">
-                        <div class="item-info">
-                            <span class="item-name">{{ p.nazev }}</span>
-                            <span class="item-type">[{{ p.typ }}]</span>
-                            <span class="item-desc">{{ p.popis }}</span>
-                            {% if p.bonus_utok and p.bonus_utok > 0 %}
-                                <span class="item-bonus">+{{ p.bonus_utok }} útok</span>
-                            {% endif %}
-                            {% if p.bonus_obrana and p.bonus_obrana > 0 %}
-                                <span class="item-bonus">+{{ p.bonus_obrana }} obrana</span>
-                            {% endif %}
-                            {% if p.typ == 'lektvar' %}
-                                <span class="item-bonus">+{{ p.obnova_zivotu }} HP</span>
-                            {% endif %}
-                        </div>
-                        <div class="item-btns">
-                            {% if p.typ == 'lektvar' %}
-                                <a href="{{ url_for('pouzi', id_predmetu=predmet_id) }}">
-                                    <button class="btn-heal">Použít</button>
-                                </a>
-                            {% endif %}
-                            <a href="{{ url_for('vyhod', id_predmetu=predmet_id) }}">
-                                <button class="btn-small btn-danger">Vyhodit</button>
-                            </a>
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="muted">Batoh je prázdný.</p>
-        {% endif %}
-
-        <hr>
-        <a href="{{ url_for('hra') }}">
-            <button class="btn-secondary">Zpět do hry</button>
-        </a>
     </div>
+    <div class="inv-stat-row">
+        <span>Útok: <strong>{{ utok }}</strong></span>
+        <span>Obrana: <strong>{{ obrana }}</strong></span>
+        <span class="slot-info {% if pocet_slotu >= max_slotu %}slot-full{% endif %}">
+            Sloty: <strong>{{ pocet_slotu }} / {{ max_slotu }}</strong>
+            {% if pocet_slotu >= max_slotu %} – PLNÝ!{% endif %}
+        </span>
+    </div>
+
+    <hr>
+
+    <!-- zprava po pouziti/vyhozeni predmetu -->
+    {% if zprava %}<div class="zprava">{{ zprava }}</div>{% endif %}
+
+    <!-- seznam predmetu v batohu -->
+    <h4>Věci u sebe:</h4>
+    {% if inventar %}
+        <ul class="item-list">
+        {% for pid in inventar %}
+            {% set p = definice_predmetu[pid] %}
+            <li class="item-row">
+                <div class="item-info">
+                    <span class="item-name">{{ p.nazev }}</span>
+                    <span class="item-type">[{{ p.typ }}]</span>
+                    <span class="item-desc">{{ p.popis }}</span>
+                    <!-- bonusy ze zbrani a brneni -->
+                    {% if p.bonus_utok   > 0 %}<span class="item-bonus">+{{ p.bonus_utok }} útok</span>{% endif %}
+                    {% if p.bonus_obrana > 0 %}<span class="item-bonus">+{{ p.bonus_obrana }} obrana</span>{% endif %}
+                    {% if p.typ == 'lektvar' %}<span class="item-bonus">+{{ p.obnova_zivotu }} HP</span>{% endif %}
+                </div>
+                <div class="item-btns">
+                    <!-- pouzit jde jen lektvar -->
+                    {% if p.typ == 'lektvar' %}
+                        <a href="{{ url_for('pouzi', id_predmetu=pid) }}">
+                            <button class="btn-heal">Použít</button>
+                        </a>
+                    {% endif %}
+                    <a href="{{ url_for('vyhod', id_predmetu=pid) }}">
+                        <button class="btn-small btn-danger">Vyhodit</button>
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p class="muted">Batoh je prázdný.</p>
+    {% endif %}
+
+    <hr>
+    <a href="{{ url_for('hra') }}"><button class="btn-secondary">Zpět do hry</button></a>
+
+</div>
 </body>
 </html>

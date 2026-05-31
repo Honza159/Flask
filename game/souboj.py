@@ -1,11 +1,9 @@
 import random
 
+# souboj.py - vypocet poskozeni pri utoku
+# vzorec: utok - obrana + nahodna odchylka
+# minimum je vzdy 1, aby utok nikdy neselhal uplne
 
 def vypocti_poskozeni(utok: int, obrana: int) -> int:
-    """
-    Vypočítá poškození útočníka vůči cíli.
-    Výsledek je ovlivněn náhodou v rozmezí -2 až +3.
-    Poškození nikdy neklesne pod 1 (vždy alespoň symbolický úder).
-    """
     poskozeni = (utok - obrana) + random.randint(-2, 3)
     return max(1, poskozeni)
